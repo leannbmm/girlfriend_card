@@ -2,23 +2,53 @@
 <html>
 <head>
   <title>Para ti ❤️</title>
+
   <style>
     body {
       font-family: Arial;
       background: #ffe6f0;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
       flex-direction: column;
-      overflow: hidden;
+    }
+
+    /* 🌸 Fondo fotos */
+    .fondo-fotos {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .marco {
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      background: white;
+      padding: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      border-radius: 10px;
+    }
+
+    .marco img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 5px;
     }
 
     h1 {
-      text-align: center;
       color: #ff4d88;
+      z-index: 2;
     }
 
+    /* 💌 Sobre */
     .contenedor {
       position: relative;
       width: 300px;
@@ -72,7 +102,7 @@
       opacity: 1;
     }
 
-    /* Texto animado */
+    /* 💖 Texto */
     .resaltado {
       color: #ff4d88;
       font-weight: bold;
@@ -93,7 +123,7 @@
       to { opacity: 1; }
     }
 
-    /* Corazones confeti */
+    /* 💥 corazones confeti */
     .corazon {
       position: absolute;
       font-size: 20px;
@@ -117,8 +147,26 @@
 
 <body>
 
+  <!-- 🌸 FOTOS DE FONDO -->
+  <div class="fondo-fotos">
+
+    <div class="marco" style="top: 40px; left: 30px; transform: rotate(-5deg);">
+      <img src="foto1.jpg">
+    </div>
+
+    <div class="marco" style="top: 200px; right: 40px; transform: rotate(4deg);">
+      <img src="foto2.jpg">
+    </div>
+
+    <div class="marco" style="bottom: 50px; left: 120px; transform: rotate(-2deg);">
+      <img src="foto3.jpg">
+    </div>
+
+  </div>
+
   <h1>Para ti 💖</h1>
 
+  <!-- 💌 SOBRE -->
   <div class="contenedor" onclick="abrirSobre(event)">
     <div class="sobre"></div>
     <div class="tapa"></div>
@@ -126,24 +174,14 @@
     <div class="carta">
       <p class="fade">Hola, guapetona 💖</p>
 
-      <p class="fade">Por fin has acabado el examen, y no sabes cuánto me alegro por ello. Verte todos estos meses esforzándote me ha encantado, porque siempre has intentado estudiar pase lo que pase.</p>
+      <p class="fade">Por fin has acabado el examen, y no sabes cuánto me alegro por ello...</p>
 
       <p class="fade">
-        Eres 
-        <span class="resaltado">súper organizada</span>, 
-        <span class="resaltado">comprometida</span>, 
-        <span class="resaltado">inteligente</span>, 
-        <span class="resaltado">guapa</span> y 
-        <span class="resaltado">graciosa</span>… 
-        me gusta absolutamente todo de ti.
-      </p>
-
-      <p class="fade">No podría estar más orgulloso de que mi novia seas tú. Tengo muchísima suerte de tener ese privilegio.</p>
-
-      <p class="fade">
-        Gracias por permitirme estar en tu vida. Y pienso estar el resto de ella, porque eres una persona 
-        <span class="resaltado">increíble</span> y 
-        <span class="resaltado">perfecta</span>.
+        Eres <span class="resaltado">súper organizada</span>,
+        <span class="resaltado">comprometida</span>,
+        <span class="resaltado">inteligente</span>,
+        <span class="resaltado">guapa</span> y
+        <span class="resaltado">graciosa</span>.
       </p>
 
       <p class="fade">
@@ -151,8 +189,7 @@
       </p>
 
       <p class="fade">
-        Te quiero de una forma que no puedes imaginar, y mi corazón es 
-        <span class="resaltado">completa y enteramente tuyo ❤️</span>
+        Te quiero ❤️
       </p>
     </div>
   </div>
@@ -177,8 +214,6 @@
 
         corazon.style.left = e.clientX + "px";
         corazon.style.top = e.clientY + "px";
-
-        corazon.style.fontSize = (15 + Math.random() * 20) + "px";
 
         document.body.appendChild(corazon);
 
