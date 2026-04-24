@@ -11,6 +11,7 @@
       align-items: center;
       height: 100vh;
       flex-direction: column;
+      overflow: hidden;
     }
 
     h1 {
@@ -24,6 +25,7 @@
       height: 200px;
       cursor: pointer;
       overflow: hidden;
+      z-index: 2;
     }
 
     .sobre {
@@ -70,7 +72,7 @@
       opacity: 1;
     }
 
-    /* Animaciones */
+    /* Animaciones texto */
     .resaltado {
       color: #ff4d88;
       font-weight: bold;
@@ -89,6 +91,26 @@
 
     @keyframes aparecer {
       to { opacity: 1; }
+    }
+
+    /* Corazones */
+    .corazon {
+      position: absolute;
+      color: #ff4d88;
+      font-size: 20px;
+      animation: flotar 4s linear forwards;
+      z-index: 1;
+    }
+
+    @keyframes flotar {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-600px) scale(1.5);
+        opacity: 0;
+      }
     }
   </style>
 </head>
@@ -138,6 +160,26 @@
   <script>
     function abrirSobre() {
       document.querySelector(".contenedor").classList.toggle("abierto");
+      lanzarCorazones();
+    }
+
+    function lanzarCorazones() {
+      for (let i = 0; i < 15; i++) {
+        let corazon = document.createElement("div");
+        corazon.className = "corazon";
+        corazon.innerHTML = "❤️";
+
+        corazon.style.left = Math.random() * window.innerWidth + "px";
+        corazon.style.top = "80%";
+
+        corazon.style.fontSize = (15 + Math.random() * 20) + "px";
+
+        document.body.appendChild(corazon);
+
+        setTimeout(() => {
+          corazon.remove();
+        }, 4000);
+      }
     }
   </script>
 
