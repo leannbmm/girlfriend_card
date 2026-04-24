@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Para ti ❤️</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      padding: 50px;
+      background: #ffe6f0;
+    }
+    h1 { color: #ff4d88; }
+    img { width: 200px; border-radius: 15px; margin: 10px; }
+    button {
+      padding: 10px 20px;
+      background: #ff4d88;
+      color: white;
+      border: none;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Para ti 💖</h1>
+
+  <p>Desde que estás en mi vida todo es mejor...</p>
+
+  <img src="https://via.placeholder.com/200" />
+
+  <br><br>
+
+  <button onclick="mostrarMensaje()">Haz click aquí 💌</button>
+
+  <p id="mensaje" style="display:none;">Eres lo mejor que me ha pasado ❤️</p>
+
+  <script>
+    function mostrarMensaje() {
+      document.getElementById("mensaje").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
