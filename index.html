@@ -13,14 +13,19 @@
       flex-direction: column;
     }
 
+    h1 {
+      text-align: center;
+      color: #ff4d88;
+    }
+
     .contenedor {
       position: relative;
       width: 300px;
       height: 200px;
       cursor: pointer;
+      overflow: hidden;
     }
 
-    /* Sobre base */
     .sobre {
       width: 100%;
       height: 100%;
@@ -29,7 +34,6 @@
       border-radius: 10px;
     }
 
-    /* Tapa del sobre */
     .tapa {
       width: 100%;
       height: 100%;
@@ -41,39 +45,50 @@
       border-radius: 10px;
     }
 
-    /* Carta dentro */
     .carta {
-  position: absolute;
-  width: 90%;
-  height: 90%;
-  background: white;
-  top: 5%;
-  left: 5%;
-  border-radius: 10px;
-  padding: 15px;
-  box-sizing: border-box;
+      position: absolute;
+      width: 90%;
+      height: 90%;
+      background: white;
+      top: 5%;
+      left: 5%;
+      border-radius: 10px;
+      padding: 15px;
+      box-sizing: border-box;
+      transform: translateY(120%);
+      opacity: 0;
+      transition: transform 1s, opacity 0.5s;
+      overflow: auto;
+    }
 
-  /* 🔴 IMPORTANTE: ocultarla de verdad */
-  transform: translateY(120%);
-  opacity: 0;
-
-  transition: transform 1s, opacity 0.5s;
-  overflow: auto;
-}
-
-    /* Estado abierto */
     .abierto .tapa {
       transform: rotateX(180deg);
     }
 
-   .abierto .carta {
-  transform: translateY(0);
-  opacity: 1;
-}
+    .abierto .carta {
+      transform: translateY(0);
+      opacity: 1;
+    }
 
-    h1 {
-      text-align: center;
+    /* Animaciones */
+    .resaltado {
       color: #ff4d88;
+      font-weight: bold;
+      animation: brillo 2s infinite alternate;
+    }
+
+    @keyframes brillo {
+      from { text-shadow: 0 0 5px #ff99cc; }
+      to { text-shadow: 0 0 20px #ff4d88; }
+    }
+
+    .fade {
+      opacity: 0;
+      animation: aparecer 2s forwards;
+    }
+
+    @keyframes aparecer {
+      to { opacity: 1; }
     }
   </style>
 </head>
@@ -87,9 +102,36 @@
     <div class="tapa"></div>
 
     <div class="carta">
-      <p>(texto de carta)</p>
-      <p>(texto de carta)</p>
-      <p>(texto de carta)</p>
+      <p class="fade">Hola, guapetona 💖</p>
+
+      <p class="fade">Por fin has acabado el examen, y no sabes cuánto me alegro por ello. Verte todos estos meses esforzándote me ha encantado, porque siempre has intentado estudiar pase lo que pase.</p>
+
+      <p class="fade">
+        Eres 
+        <span class="resaltado">súper organizada</span>, 
+        <span class="resaltado">comprometida</span>, 
+        <span class="resaltado">inteligente</span>, 
+        <span class="resaltado">guapa</span> y 
+        <span class="resaltado">graciosa</span>… 
+        me gusta absolutamente todo de ti.
+      </p>
+
+      <p class="fade">No podría estar más orgulloso de que mi novia seas tú. Tengo muchísima suerte de tener ese privilegio.</p>
+
+      <p class="fade">
+        Gracias por permitirme estar en tu vida. Y pienso estar el resto de ella, porque eres una persona 
+        <span class="resaltado">increíble</span> y 
+        <span class="resaltado">perfecta</span>.
+      </p>
+
+      <p class="fade">
+        <strong class="resaltado">Eres el amor de mi vida, Sarah Bachiller.</strong>
+      </p>
+
+      <p class="fade">
+        Te quiero de una forma que no puedes imaginar, y mi corazón es 
+        <span class="resaltado">completa y enteramente tuyo ❤️</span>
+      </p>
     </div>
   </div>
 
