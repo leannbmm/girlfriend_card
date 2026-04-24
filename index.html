@@ -9,34 +9,52 @@
       padding: 50px;
       background: #ffe6f0;
     }
+
     h1 { color: #ff4d88; }
-    img { width: 200px; border-radius: 15px; margin: 10px; }
+
     button {
       padding: 10px 20px;
       background: #ff4d88;
       color: white;
       border: none;
       border-radius: 10px;
+      cursor: pointer;
+    }
+
+    /* Carta */
+    .carta {
+      max-width: 500px;
+      margin: 20px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+
+      /* empieza oculta */
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 1s ease;
+    }
+
+    .carta.abierta {
+      max-height: 1000px; /* suficiente para mostrar todo */
     }
   </style>
 </head>
+
 <body>
 
   <h1>Para ti 💖</h1>
 
-  <p>Desde que estás en mi vida todo es mejor...</p>
+  <button onclick="abrirCarta()">Abrir carta 💌</button>
 
-  <img src="https://via.placeholder.com/200" />
-
-  <br><br>
-
-  <button onclick="mostrarMensaje()">Haz click aquí 💌</button>
-
-  <p id="mensaje" style="display:none;">Eres lo mejor que me ha pasado ❤️</p>
+  <div id="carta" class="carta">
+    <p>(texto de carta)</p>
+  </div>
 
   <script>
-    function mostrarMensaje() {
-      document.getElementById("mensaje").style.display = "block";
+    function abrirCarta() {
+      document.getElementById("carta").classList.toggle("abierta");
     }
   </script>
 
