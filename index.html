@@ -72,7 +72,7 @@
       opacity: 1;
     }
 
-    /* Animaciones texto */
+    /* Texto animado */
     .resaltado {
       color: #ff4d88;
       font-weight: bold;
@@ -93,22 +93,22 @@
       to { opacity: 1; }
     }
 
-    /* Corazones */
+    /* Corazones confeti */
     .corazon {
       position: absolute;
-      color: #ff4d88;
       font-size: 20px;
-      animation: flotar 4s linear forwards;
+      pointer-events: none;
+      animation: explosion 1.5s ease-out forwards;
       z-index: 1;
     }
 
-    @keyframes flotar {
+    @keyframes explosion {
       0% {
-        transform: translateY(0) scale(1);
+        transform: translate(0,0) scale(1);
         opacity: 1;
       }
       100% {
-        transform: translateY(-600px) scale(1.5);
+        transform: translate(var(--x), var(--y)) scale(1.5);
         opacity: 0;
       }
     }
@@ -119,7 +119,7 @@
 
   <h1>Para ti 💖</h1>
 
-  <div class="contenedor" onclick="abrirSobre()">
+  <div class="contenedor" onclick="abrirSobre(event)">
     <div class="sobre"></div>
     <div class="tapa"></div>
 
@@ -158,19 +158,25 @@
   </div>
 
   <script>
-    function abrirSobre() {
+    function abrirSobre(e) {
       document.querySelector(".contenedor").classList.toggle("abierto");
-      lanzarCorazones();
+      explotarCorazones(e);
     }
 
-    function lanzarCorazones() {
-      for (let i = 0; i < 15; i++) {
+    function explotarCorazones(e) {
+      for (let i = 0; i < 25; i++) {
         let corazon = document.createElement("div");
         corazon.className = "corazon";
         corazon.innerHTML = "❤️";
 
-        corazon.style.left = Math.random() * window.innerWidth + "px";
-        corazon.style.top = "80%";
+        let x = (Math.random() - 0.5) * 600 + "px";
+        let y = (Math.random() - 0.5) * 600 + "px";
+
+        corazon.style.setProperty('--x', x);
+        corazon.style.setProperty('--y', y);
+
+        corazon.style.left = e.clientX + "px";
+        corazon.style.top = e.clientY + "px";
 
         corazon.style.fontSize = (15 + Math.random() * 20) + "px";
 
@@ -178,7 +184,7 @@
 
         setTimeout(() => {
           corazon.remove();
-        }, 4000);
+        }, 1500);
       }
     }
   </script>
